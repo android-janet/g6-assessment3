@@ -5,7 +5,6 @@
 
 <%= link_to 'Edit Yourself', edit_student_path %>
 <%= link_to("Delete Yourself", @student, :method => :delete, :class => 'action', data: {confirm: "Are you sure?"}) %>
-<%= link_to 'Add Your Courses', new_course_path %>
 
  <table>
    <tr>
@@ -13,7 +12,12 @@
        COURSE SUBJECT
      </th>
    </tr>
-   <% @student.courses.each do |course| %>
-   <%= course.subject %>
-   <% end %>
+
+   <tr>
+     <td>
+       <% @student.courses.each do |course| %>
+       <%= course.subject %> <br>
+       <% end %>
+     </td>
+   </tr>
  </table>

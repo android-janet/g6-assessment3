@@ -1,22 +1,20 @@
 class CoursesController < ApplicationController
   def index
+    @instructor = Instructor.find_by_id(params[:instructor_id])
+    @instructors = Instructor.all
     @courses = Course.all
   end
 
   def new
     @course = Course.new
-    @student = Student.find_by_id(params[:student_id])
-    @instructor = Instructor.find_by_id(params[:instructor_id])
     @students = Student.all
+    @instructors = Instructor.all
   end
 
   def create
+    @student = Student.find_by_id(params[:student_id])
+    @instructor = Instructor.find_by_id(params[:instructor_id])
     @course = Course.new(course_params)
-    # @student = Student.find_by_id(params[:student_id])
-    # @instructor = Instructor.find_by_id(params[:instructor_id])
-    # @instructors = Instructor.all
-    # @students = Student.all
-    # @course.students << @student
     if @course.save
       redirect_to course_path(@course)
     else
@@ -32,9 +30,13 @@ class CoursesController < ApplicationController
 
   def edit
     @course = Course.find(params[:id])
+    @student = Student.find_by_id(params[:student_id])
+    @instructor = Instructor.find_by_id(params[:instructor_id])
   end
 
   def update
+    @student = Student.find_by_id(params[:student_id])
+    @instructor = Instructor.find_by_id(params[:instructor_id])
     @course = Course.find(params[:id])
     if @course.update(course_params)
       redirect_to course_path(@course)

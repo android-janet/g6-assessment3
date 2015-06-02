@@ -5,4 +5,6 @@
 <%= link_to("Delete Course", @course, :method => :delete, :class => 'action', data: {confirm: "Are you sure?"}) %>
 
 
-<%= @course.instructor_id %>
+<h2> Class Instructor: </h2>
+
+<%= @course.instructor.first_name %>

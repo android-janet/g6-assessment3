@@ -5,10 +5,13 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+    @courses = Course.all
   end
 
   def create
+    @course = Course.find_by_id(params[:course_id])
     @student = Student.new(student_params)
+    @student.courses << @course
     if @student.save
       redirect_to student_path(@student)
     else
@@ -17,15 +20,19 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @course = Course.find_by_id(params[:course_id])
     @student = Student.find(params[:id])
   end
 
   def edit
+    @course = Course.find_by_id(params[:course_id])
     @student = Student.find(params[:id])
   end
 
   def update
+    @course = Course.find_by_id(params[:course_id])
     @student = Student.find(params[:id])
+    @student.courses << @course
     if @student.update(student_params)
       redirect_to student_path(@student)
     else
@@ -41,6 +48,6 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :course_id)
+    params.require(:student).permit(:first_name, :last_name)
   end
 end
