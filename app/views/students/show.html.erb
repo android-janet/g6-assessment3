@@ -1,1 +1,23 @@
-<%= @student.first_name %> <%= @student.last_name %>
+<h2> Courses for Student: <%= @student.first_name %> <%= @student.last_name %>
+ </h2>
+
+<hr>
+
+<%= link_to 'Edit Yourself', edit_student_path %>
+<%= link_to 'Add Your Courses', new_student_course_path(@student) %>
+
+ <table>
+   <tr>
+     <th>
+       COURSE SUBJECT
+     </th>
+   </tr>
+
+<% @student.courses.each do |course| %>
+   <tr>
+     <td>
+       <%= course.subject %>
+     </td>
+   </tr>
+   <% end %>
+ </table>

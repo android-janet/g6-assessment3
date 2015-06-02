@@ -1,4 +1,4 @@
-class Class < ActiveRecord::Base
+class Course < ActiveRecord::Base
 belongs_to :student
 belongs_to :instructor
 
