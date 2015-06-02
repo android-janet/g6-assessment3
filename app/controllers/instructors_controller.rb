@@ -5,12 +5,13 @@ class InstructorsController < ApplicationController
 
   def new
     @instructor = Instructor.new
+    @courses = Course.all 
   end
 
   def create
     @course = Course.find_by_id(params[:course_id])
     @instructor = Instructor.new(instructor_params)
-    @instructor.id  
+    @instructor.courses << @course
     if @instructor.save
       redirect_to instructor_path(@instructor)
     else
@@ -31,7 +32,7 @@ class InstructorsController < ApplicationController
   def update
     @course = Course.find_by_id(params[:course_id])
     @instructor = Instructor.find(params[:id])
-    @instructor.id
+    @instructor.courses << @course
     if @instructor.update(instructor_params)
       redirect_to instructor_path(@instructor)
     else
