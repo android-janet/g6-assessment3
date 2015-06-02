@@ -1,1 +1,8 @@
 <h1> Course Subject:  <%= @course.subject %> </h1>
+
+<%= link_to 'Delete Course' course_path %>
+
+
+<% @course.students.each do |student| %>
+<%= student.first_name %>
+<% end %>

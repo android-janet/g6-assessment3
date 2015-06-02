@@ -5,14 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 root 'welcome#index'
 
-resources :students do
-resources :courses
-end
-
-resources :instructors do
-  resources :courses
-end
-
+resources :students
+resources :instructors
 resources :courses
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

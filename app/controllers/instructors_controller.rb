@@ -20,6 +20,19 @@ class InstructorsController < ApplicationController
     @instructor = Instructor.find(params[:id])
   end
 
+  def edit
+    @instructor = Instructor.find(params[:id])
+  end
+
+  def update
+    @instructor = Instructor.find(params[:id])
+    if @instructor.update(instructor_params)
+      redirect_to instructor_path(@instructor)
+    else
+      render :edit
+    end
+  end
+
   private
   def instructor_params
     params.require(:instructor).permit(:first_name, :last_name)

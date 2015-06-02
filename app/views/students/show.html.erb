@@ -4,7 +4,8 @@
 <hr>
 
 <%= link_to 'Edit Yourself', edit_student_path %>
-<%= link_to 'Add Your Courses', new_student_course_path(@student) %>
+<%= link_to 'Delete Yourself' student_path %>
+<%= link_to 'Add Your Courses', new_course_path %>
 
  <table>
    <tr>
@@ -12,12 +13,7 @@
        COURSE SUBJECT
      </th>
    </tr>
-
-<% @student.courses.each do |course| %>
-   <tr>
-     <td>
-       <%= course.subject %>
-     </td>
-   </tr>
+   <% @student.courses.each do |course| %>
+   <%= course.subject %>
    <% end %>
  </table>

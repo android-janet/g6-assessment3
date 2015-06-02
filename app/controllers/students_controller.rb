@@ -18,7 +18,6 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
-    @course = Course.find_by_id(params[:course_id])
   end
 
   def edit

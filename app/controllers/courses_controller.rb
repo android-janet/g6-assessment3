@@ -4,16 +4,22 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @student = Student.find_by_id(params[:student_id])
     @course = Course.new
+    @student = Student.find_by_id(params[:student_id])
+    @instructor = Instructor.find_by_id(params[:instructor_id])
+    @students = Student.all
   end
 
   def create
-    @student = Student.find_by_id(params[:student_id])
     @course = Course.new(course_params)
-    @student.courses << @student
+    @student = Student.find_by_id(params[:student_id])
+    @instructor = Instructor.find_by_id(params[:instructor_id])
+    @instructors = Instructor.all
+    @students = Student.all
+    @course.students << @student
+    @course.instructors << @instructor
     if @course.save
-      redirect_to student_path(@student)
+      redirect_to course_path(@course)
     else
       render :new
     end
@@ -22,6 +28,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @student = Student.find_by_id(params[:student_id])
+    @instructor = Instructor.find_by_id(params[:instructor_id])
   end
 
 private

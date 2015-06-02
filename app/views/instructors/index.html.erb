@@ -1,1 +1,26 @@
 <%= link_to 'Home', root_path %>
+
+
+<h2> INSTRUCTORS </h2>
+<table>
+  <tr>
+    <th>
+      FIRST NAME
+    </th>
+    <th>
+      LAST NAME
+    </th>
+  </tr>
+
+  <% @instructors.each do |instructor| %>
+  <tr>
+    <td>
+      <%= link_to {link_to(instructor.first_name, instructor)} %> <br>
+    </td>
+    <td>
+    </td>
+  </tr>
+</table>
+
+
+ <% end %>
