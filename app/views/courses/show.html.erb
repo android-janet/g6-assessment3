@@ -1,6 +1,6 @@
 <h1> Course Subject:  <%= @course.subject %> </h1>
 
-<%= link_to 'Delete Course' course_path %>
+<%= link_to("Delete Course", @course, :method => :delete, :class => 'action', data: {confirm: "Are you sure?"}) %>
 
 
 <% @course.students.each do |student| %>
