@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   def index
     @instructor = Instructor.find_by_id(params[:instructor_id])
-    @instructors = Instructor.all
     @courses = Course.all
   end
 
@@ -25,6 +24,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @student = Student.find_by_id(params[:student_id])
+    @students = Student.all
     @instructor = Instructor.find_by_id(params[:instructor_id])
   end
 
@@ -52,7 +52,7 @@ class CoursesController < ApplicationController
 
 private
 def course_params
-  params.require(:course).permit(:subject)
+  params.require(:course).permit(:subject, :student_id, :instructor_id)
 end
 
 
