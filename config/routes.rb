@@ -8,6 +8,7 @@ root 'welcome#index'
 resources :students
 resources :instructors
 resources :courses
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

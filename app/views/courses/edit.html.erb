@@ -1,0 +1,12 @@
+<%= form_for @course do |f| %>
+
+<%= collection_select @instructor, :instructor_id, Instructor.all, :id, :first_name, :prompt => 'Select Instructor', :multiple => true %>
+
+<%= collection_select @student, :student_id, Student.all, :id, :first_name, :prompt => 'Select Student', :multiple => true %>
+
+<%= f.label :subject %>
+<%= f.text_field :subject %>
+
+<%= f.submit %>
+
+<% end %>
