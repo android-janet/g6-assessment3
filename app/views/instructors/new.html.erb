@@ -5,7 +5,7 @@
 <%= f.label :last_name %>
 <%= f.text_field :last_name %>
 
-<%= collection_select @course, :course_id, Course.all, :id, :subject, :prompt => 'Select Course' %>
+<%= collection_select @course, :course_id, Course.all, :id, :subject, :prompt => 'Select Course', :multiple => true %>
 
 
 <%= f.submit %>

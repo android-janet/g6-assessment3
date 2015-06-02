@@ -1,13 +1,13 @@
 <h1> edit yourself </h1>
 
-<%= form_for [@course, @instructor] do |f| %>
+<%= form_for @instructor do |f| %>
 
 <%= f.label :first_name %>
 <%= f.text_field :first_name %>
 <%= f.label :last_name %>
 <%= f.text_field :last_name %>
 
-<%= collection_select @course, :course_id, Course.all, :id, :subject, :prompt => 'Select Course' %>
+<%= collection_select @course, :course_id, Course.all, :id, :subject, :prompt => 'Select Course', :multiple => true %>
 
 
 <%= f.submit %>
